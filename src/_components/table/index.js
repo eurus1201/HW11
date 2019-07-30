@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Header from './header';
 import Row from './row';
+import Pagination from './Pagination';
 
 export default class Table extends Component {
     state = {
