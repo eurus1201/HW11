@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import Header from './header';
 import Row from './row';
-import Pagination from './Pagination';
 
 export default class Table extends Component {
     state = {
@@ -40,6 +39,19 @@ export default class Table extends Component {
               {rows.map(row=><Row key={row.id} row={row} columns={columns} onDelete={deleteRow(row.id)} onEdit={editRow} />)}
             </tbody>
           </table>
+          <div>
+              <div className="paging">0
+                  <div>
+                      {/* kelid aghab jelo */}
+                  </div>
+                  <div>
+                      {/* shomare safe */}
+                  </div>
+                  <div>
+                      {/* kelid aghab jlo */}
+                  </div>
+              </div>
+          </div>
         </>;
     }
 }

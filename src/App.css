@@ -17,3 +17,8 @@ table {
   border-radius: 20px;
   text-align: center;
 }
+.paging{
+text-align: center;
+min-width: 200px;
+padding: 10px;
+}
