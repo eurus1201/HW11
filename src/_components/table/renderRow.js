@@ -2,18 +2,20 @@ import React from 'react';
 
 
 
-   function RenderRow  ({column}) {
+   function RenderRow  ({column , changeHandler}) {
+      
+
         switch (column.type) {
             case 'bool':
                 return <input
                     type="checkbox"
                     name={column.name}
-                    checked={this.state[column.name]}
-                    onChange={this.changeHandler}
+                    checked={column.name}
+                    onChange={changeHandler}
                     placeholder={column.label}
                 />
             case 'list':
-                return <select name={column.name} onChange={this.changeHandler}>
+                return <select name={column.name} onChange={changeHandler}>
                     {column.options.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
                 </select>
             default:
@@ -26,8 +28,8 @@ import React from 'react';
                 return <input
                     type={column.type}
                     name={column.name}
-                    value={this.state[column.name]}
-                    onChange={this.changeHandler}
+                    value={column.name}
+                    onChange={changeHandler}
                     placeholder={column.label}
                 />
         }
