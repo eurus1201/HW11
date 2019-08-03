@@ -67,14 +67,17 @@ export default class Header extends Component {
                         />
         }
     }
-
+    onSort = (event) => {
+        this.props.sortColumn(event.target.innerHTML);
+    }
 
     render() {
         const {columns} = this.props;
         const disabled = !columns.every(column => column.required ? this.state[column.name] : true )
         return <thead>
             <tr>
-                {columns.map(column=><th key={column.name}>{column.label} {column.required ? '*' : ''}</th>)}
+                {columns.map(column => <th key={column.name} onClick={this.onSort}>{column.label} {column.required ? '*' : ''}
+                </th>)}
                 <th>Action</th>
             </tr>
             <tr>
