@@ -9,7 +9,7 @@ export default class Table extends Component {
     }
     componentDidMount() {
         const { rows } = this.state;
-        // const { data: rows = [] } = row.findAll();
+        // const { data: rows = [] } = row.findAll(); inja eror mide
         this.setState({ rows });
     }
     onPageChanged = data => {
