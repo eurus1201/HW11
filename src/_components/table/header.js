@@ -21,6 +21,7 @@ export default class Header extends Component {
         this.state = this.initState;
     }
     
+    
     changeHandler = (event) =>{
         const {target:{value,name,type,checked}} = event;
         if (type === 'checkbox') {

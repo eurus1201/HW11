@@ -5,7 +5,10 @@ import Row from './row';
 
 export default class Table extends Component {
     state = {
-        rows: [], isSort: false,
+        rows: [],
+         isSort: false,
+         currentPage: 1,
+        addedRowInPage: 3
     }
     
    
@@ -218,9 +221,24 @@ export default class Table extends Component {
 
         this.setState({ rows });
     }
+
+    onChangePage = (event) => {
+        this.setState({
+            currentPage: Number(event.target.id)
+        });
+    }
+
+
     render() {
-        const { rows } = this.state;
+        const { rows, currentPage, addedRowInPage } = this.state;
         const { addRow, deleteRow, editRow, sortColumn, props: { columns } } = this;
+        const lastRowToSlice = currentPage * addedRowInPage;
+        const firstRowToSlice = lastRowToSlice - addedRowInPage;
+        const rowsPerPage = rows.slice(firstRowToSlice, lastRowToSlice);
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(rows.length / addedRowInPage); i++) {
+            pageNumbers.push(i);
+
         return <> {/* <React.Fragment> */}
             <h1>Editable Table</h1>
             <table>
@@ -233,6 +251,21 @@ export default class Table extends Component {
                     {rows.map(row => <Row key={row.id} row={row} columns={columns} onDelete={deleteRow(row.id)} onEdit={editRow} />)}
                 </tbody>
             </table>  
+            <div className="page-number">
+                <ul>
+                    {pageNumbers.map(number => {
+                        return (
+                            <li
+                                key={number}
+                                id={number}
+                                onClick={this.onChangePage}
+                            >
+                                {number}
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </>;
     }
-}
+    }}
