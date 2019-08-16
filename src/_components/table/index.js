@@ -1,26 +1,14 @@
 import React, { Component } from 'react';
 import Header from './header';
 import Row from './row';
-import Pagination from './Pagination'
+
 
 export default class Table extends Component {
     state = {
-        rows: [], currentRow: [], currentPage: null, totalPages: null
+        rows: [], isSort: false,
     }
-    componentDidMount() {
-        const { rows } = this.state;
-        // const { data: rows = [] } = row.findAll(); inja eror mide
-        this.setState({ rows });
-    }
-    onPageChanged = data => {
-        const { rows } = this.state;
-        const { currentPage, totalPages, pageLimit } = data;
-
-        const offset = (currentPage - 1) * pageLimit;
-        const currentRow = rows.slice(offset, offset + pageLimit);
-
-        this.setState({ currentPage, currentRow, totalPages });
-    }
+    
+   
 
     addRow = row => {
         const { rows } = this.state;
@@ -244,14 +232,7 @@ export default class Table extends Component {
                 <tbody>
                     {rows.map(row => <Row key={row.id} row={row} columns={columns} onDelete={deleteRow(row.id)} onEdit={editRow} />)}
                 </tbody>
-            </table>
-
-
-<div>0
-                <Pagination rows={rows} />
-</div>
-          
-
+            </table>  
         </>;
     }
 }
