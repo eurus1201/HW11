@@ -237,7 +237,7 @@ export default class Table extends Component {
         const rowsPerPage = rows.slice(firstRowToSlice, lastRowToSlice);
         const pageNumbers = [];
         for (let i = 1; i <= Math.ceil(rows.length / addedRowInPage); i++) {
-            pageNumbers.push(i);
+            pageNumbers.push(i);}
 
         return <> {/* <React.Fragment> */}
             <h1>Editable Table</h1>
@@ -248,7 +248,7 @@ export default class Table extends Component {
                     sortColumn={sortColumn}
                 />
                 <tbody>
-                    {rows.map(row => <Row key={row.id} row={row} columns={columns} onDelete={deleteRow(row.id)} onEdit={editRow} />)}
+                    {rowsPerPage.map(row => <Row key={row.id} row={row} columns={columns} onDelete={deleteRow(row.id)} onEdit={editRow} />)}
                 </tbody>
             </table>  
             <div className="page-number">
@@ -267,5 +267,5 @@ export default class Table extends Component {
                 </ul>
             </div>
         </>;
-    }
+    
     }}
